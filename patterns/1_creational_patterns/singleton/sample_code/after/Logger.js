@@ -14,14 +14,13 @@ class Logger {
   }
 }
 
-let instance = null;
-const singleton = {
-  getInstance() {
-    if (!instance) {
-      instance = new Logger();
+class Singleton {
+  static instance;
+  static getInstance() {
+    if (!Singleton.instance) {
+      Singleton.instance = new Logger();
     }
-    return instance;
-  },
-};
-
-module.exports = singleton;
+    return Singleton.instance;
+  }
+}
+module.exports = Singleton;
