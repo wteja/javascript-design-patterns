@@ -123,7 +123,7 @@ As you can see, if we want to use Logger in 3 files, we have to create new insta
 # Solution
 
 We create the function that check if there Logger instance already create. If not, just create one and return to caller.
-Just like the example below
+Just like the example below:
 
 ```javascript
 class Logger {
@@ -149,37 +149,6 @@ exports.getInstance = () => {
   }
   return instance;
 };
-```
-
-Another approach is create Singleton class and make an instance variable to be static property. And create static method "getInstance" which check if instance variable is created. If not, created one and return to caller.
-
-```javascript
-class Logger {
-  constructor() {
-    this.logs = [];
-  }
-
-  get count() {
-    return this.logs.length;
-  }
-
-  log(message) {
-    const timestamp = new Date().toISOString();
-    this.logs.push({ message, timestamp });
-    console.log(`${timestamp} - ${message}`);
-  }
-}
-
-class Singleton {
-  static instance;
-  static getInstance() {
-    if (!Singleton.instance) {
-      Singleton.instance = new Logger();
-    }
-    return Singleton.instance;
-  }
-}
-module.exports = Singleton;
 ```
 
 Run it with command:
